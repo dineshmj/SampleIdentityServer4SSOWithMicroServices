@@ -1,0 +1,185 @@
+﻿@using CMS.Proposals.App.Models;
+
+@model PaymentModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Make a Payment</title>
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="~/css/site.css" />
+	</head>
+	<body>
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script src="~/scripts/TS/signalr-client-1.0.0-alpha2-final.js"></script>
+		<script src="~/js/site.js"></script>
+
+		<div>
+			<div class="col-lg-6">
+				<h2>Make a Payment</h2>
+			</div>
+
+			<div style="left:10px">
+				<div class="col-sm-offset-0 col-sm-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Enter Payment Details</h3>
+						</div>
+						<div class="panel-body">
+							<form>
+								<fieldset>
+									<table>
+										<tr>
+											<td width="40%">
+												<div class="form-group">
+													<label asp-for="PaymentId" class="control-label"></label>
+												</div>
+											</td>
+											<td width="60%">
+												<div class="form-group">
+													<input asp-for="PaymentId" class="form-control" />
+													<span asp-validation-for="PaymentId" class="text-danger"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td width="40%">
+												<div class="form-group">
+													<label asp-for="PaymentDueDate" class="control-label"></label>
+												</div>
+											</td>
+											<td width="60%">
+												<div class="form-group">
+													<input asp-for="PaymentDueDate" class="form-control" />
+													<span asp-validation-for="PaymentDueDate" class="text-danger"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td width="40%">
+												<div class="form-group">
+													<label asp-for="DatePaidOn" class="control-label"></label>
+												</div>
+											</td>
+											<td width="60%">
+												<div class="form-group">
+													<input asp-for="DatePaidOn" class="form-control" />
+													<span asp-validation-for="DatePaidOn" class="text-danger"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td width="40%">
+												<div class="form-group">
+													<label asp-for="AmountDue" class="control-label"></label>
+												</div>
+											</td>
+											<td width="60%">
+												<div class="form-group">
+													<input asp-for="AmountDue" class="form-control" />
+													<span asp-validation-for="AmountDue" class="text-danger"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td width="40%">
+												<div class="form-group">
+													<label asp-for="InterestAmount" class="control-label"></label>
+												</div>
+											</td>
+											<td width="60%">
+												<div class="form-group">
+													<input asp-for="InterestAmount" class="form-control" />
+													<span asp-validation-for="InterestAmount" class="text-danger"></span>
+												</div>
+											</td>
+										</tr>
+
+										<tr>
+											<td width="40%"></td>
+											<td width="60%">
+												<div class="form-group">
+													<div class="col-md-offset-8 col-md-10">
+														<button id="submit">Submit</button>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		@*@section Scripts {
+			@{await Html.RenderPartialAsync ("_ValidationScriptsPartial");}
+		}*@
+
+		<script type="text/javascript">
+			$("#submit").click(function () {
+				//debugger;
+				var paymentInfo = new Object();
+
+				paymentInfo.PaymentId = $("#Message_PaymentId").val();
+				paymentInfo.PaymentDueDate = $("#Message_PaymentDueDate").val();
+				paymentInfo.DatePaidOn = $("#Message_DatePaidOn").val();
+				paymentInfo.AmountDue = $("#Message_AmountDue").val();
+				paymentInfo.InterestAmount = $("#Message_InterestAmount").val();
+
+				$.ajax({
+					type: "POST",
+					url: "/api/PaymentInfoApi",
+					data: JSON.stringify(paymentInfo),
+					contentType: 'application/json; charset=utf-8',
+
+					success: function (data) {
+						alert('Payment request successfully submitted.');
+						// console.log(data);
+					},
+					error: function (xhr, textStatus, errorThrown) {
+						debugger;
+						alert('An error was encountered while submitting the Payment request.');
+						// console.log('Error in Operation');
+					}
+				});
+
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+
+				debugger;
+				var transportType = signalR.TransportType.WebSockets;
+				//can also be ServerSentEvents or LongPolling
+				var logger = new signalR.ConsoleLogger(signalR.LogLevel.Information);
+				var chatHub = new signalR.HttpConnection('http://${document.location.host}/chat', { transport: transportType, logger: logger });
+				var chatConnection = new signalR.HubConnection(chatHub, logger);
+
+				chatConnection.onClosed = e => {
+					console.log('connection closed');
+				};
+
+				chatConnection.on('Send', (message) => {
+					console.log('received message');
+				});
+
+				chatConnection.start().catch(err => {
+					console.log('connection error');
+				});
+
+				function send(message) {
+					chatConnection.invoke('Send', message);
+				}
+			});
+		</script>
+	</body>
+</html>

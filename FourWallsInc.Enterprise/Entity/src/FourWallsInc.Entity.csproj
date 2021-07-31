@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SSO\AppGroups\**" />
+    <EmbeddedResource Remove="SSO\AppGroups\**" />
+    <None Remove="SSO\AppGroups\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="LobApp\CMS\StaticUserNames.cs" />
+    <Compile Remove="SSO\IProtectedAppGroupProvider.cs" />
+    <Compile Remove="SSO\ProtectedAppGroupBase.cs" />
+    <Compile Remove="SSO\ProtectedAppPairBase.cs" />
+  </ItemGroup>
+
+</Project>

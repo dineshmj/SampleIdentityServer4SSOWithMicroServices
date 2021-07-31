@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Moq" Version="4.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entity\src\FourWallsInc.Entity.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\src\FourWallsInc.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Utilities\src\FourWallsInc.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

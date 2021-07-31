@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Authentication;
+
+@model CMS.Master.App.Models.MasterLayoutModel
+
+@{
+	ViewData ["Title"] = "Customer Management System";
+}
+
+<div @*class="container"*@ style="width:1500px">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table { width:100%; table-layout: fixed; overflow-wrap: break-word; }">
+				<tr>
+					<td  width="5%">
+						<img src="~/images/FourWallsIncLogoShrunk.png" />
+						<p/>
+					</td>
+					<td  width="95%">
+						<h1 @*class="col-md-offset-2"*@>@Html.DisplayFor(modelItem => Model.ApplicationName)</h1>
+						<p/>
+						<h4 @*class="col-md-offset-2"*@>Version @Html.DisplayFor(modelItem => Model.Version)</h4>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2" style="height:1000px; border:1px solid gray">
+			<div>
+				<input id="uniqueCustomerId" type="hidden" value="@await base.ViewContext.HttpContext.GetTokenAsync("access_token");" />
+			</div>
+			<div class="row">
+				@foreach (var oneModule in Model.ModuleModels)
+				{
+					// Show the group name.
+					<div class="col-md-12">
+						<h3>@Html.DisplayFor(modelItem => oneModule.ModuleName)</h3>
+					</div>
+
+					foreach (var oneSubModule in oneModule.SubModules)
+					{
+						<div class="col-md-offset-2">
+							@Html.DisplayFor(modelItem => oneSubModule.SubModuleName)
+						</div>
+
+						   // For each URI under the above group (module name), add the links.
+						@foreach (var i in oneSubModule.Links)
+						{
+							<div class="col-md-offset-2">
+								@*The CSS class used below causes the links to indent a little after the Module Group name.*@
+								<a class="iframeLink" target="lobModuleIFrame" style="padding-left:40px" href="@Html.DisplayFor(modelLink => i.LinkUri)">
+									@Html.DisplayFor(modelLink => i.LinkFriendlyName)
+								</a>
+							</div>
+						}
+					}
+				}
+			</div>
+		</div>
+		<div class="col-md-10" style="height:1000px">
+			@*
+			The below iFrame is going to get the HTML response from the individual Module LoB App pages, and it
+			would render the UIs.
+			*@
+			<iframe id="lobModuleIFrame" name="lobModuleIFrame" src="about:blank" style="border:2px solid gray" width="100%" height="100%">
+
+			</iframe>
+		</div>
+	</div>
+</div>
+<script language="text/javascipt">
+
+</script>
+@*  *@

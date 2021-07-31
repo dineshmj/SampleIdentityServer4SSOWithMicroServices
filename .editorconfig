@@ -1,0 +1,17 @@
+﻿# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+# https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference?view=vs-2019
+
+# All files
+[*]
+indent_style = tab
+indent_size = 4
+insert_final_newline = true
+charset = utf-8-bom
+
+# Xml files
+[*.xml]
+indent_size = 2
+
+# Organize usings
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false

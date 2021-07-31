@@ -1,0 +1,20 @@
+﻿{
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			/* "applicationUrl": "http://localhost:49941/", */
+			"applicationUrl": "http://localhost:51202/",
+			"sslPort": 0
+		}
+	},
+	"profiles": {
+		"CMS.IDP.App": {
+			"commandName": "Project",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"applicationUrl": "http://localhost:51202/"
+		}
+	}
+}
