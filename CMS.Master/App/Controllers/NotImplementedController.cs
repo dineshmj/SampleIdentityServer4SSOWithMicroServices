@@ -3,25 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Master.App.Controllers
 {
-	/// <summary>
-	/// A controller that gives a "Not Implemented" message to the end user.
-	/// </summary>
+	// A controller that gives a "Not Implemented" message to the end user.
 	[Authorize]
 	public sealed class NotImplementedController
 		: Controller
 	{
-		#region Action methods.
-
-		/// <summary>
-		/// Forms the menu strip on the left pane.
-		/// </summary>
-		/// <returns></returns>
+		// Forms the menu strip on the left pane.
 		public IActionResult Index ()
 		{
 			// Render the view.
-			return (base.View ());
+			return base.View ();
 		}
-
-		#endregion
 	}
 }

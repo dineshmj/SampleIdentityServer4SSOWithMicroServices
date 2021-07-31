@@ -8,14 +8,14 @@ using CMS.Proposals.App.Models;
 namespace CMS.Proposals.App.Controllers
 {
 	[Authorize]
-	public sealed class PaymentInfoController
+	public sealed class ProposalsController
 		: Controller
 	{
 		// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: The following "role" based authorization control restricts
 		// unauthorized access to this MVC action method.
-		[Authorize (Roles = Roles.ROLE_MAKE_A_PAYMENT)]
+		[Authorize (Roles = Roles.PROPOSALS_MGMT)]
 		[HttpGet]
-		public IActionResult Create ()
+		public IActionResult ConvertQuoteToProposal ()
 		{
 			var paymentModel =  new PaymentModel ()
 				{
@@ -31,7 +31,7 @@ namespace CMS.Proposals.App.Controllers
 
 		// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: The following "role" based authorization control restricts
 		// unauthorized access to this MVC action method.
-		[Authorize (Roles = Roles.ROLE_MAKE_A_PAYMENT)]
+		[Authorize (Roles = Roles.PROPOSALS_MGMT)]
 		[HttpGet]
 		public IActionResult Search ()
 		{

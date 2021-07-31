@@ -15,9 +15,7 @@ using FourWallsInc.Infrastructure.ConfigMgmt;
 
 namespace CMS.Master.App.Controllers
 {
-	/// <summary>
-	/// This controller's name is apparently wrong - it should have been "MenuStripController" instead.
-	/// </summary>
+	// This controller's name is apparently wrong - it should have been "MenuStripController" instead.
 	[Authorize]
 	public sealed class BrandInfoController
 		: Controller
@@ -31,10 +29,7 @@ namespace CMS.Master.App.Controllers
 
 		#region Action methods.
 
-		/// <summary>
-		/// Forms the menu strip on the left pane.
-		/// </summary>
-		/// <returns></returns>
+		// Forms the menu strip on the left pane.
 		public async Task<IActionResult> Index ()
 		{
 			const string CFG_KEY_BRAND_INFO_API_SERVICE_URI = "BrandInfoApiServiceUri";
@@ -132,26 +127,12 @@ namespace CMS.Master.App.Controllers
 																	)
 																	.ToList ();
 
-														return
-															(
-																new SubModuleModel
-																{
-																	SubModuleName = smg,
-																	Links = urisOfThisModule
-																}
-															);
+														return new SubModuleModel { SubModuleName = smg, Links = urisOfThisModule};
 													}
 												)
 											.ToList ();
 
-									return
-										(
-											new ModuleModel
-											{
-												ModuleName = mg,
-												SubModules = subModules
-											}
-										);
+									return new ModuleModel { ModuleName = mg, SubModules = subModules };
 								}
 							)
 						.ToList ();
@@ -170,7 +151,7 @@ namespace CMS.Master.App.Controllers
 						};
 
 				// Render the menu strip view.
-				return (base.View (masterLayoutModel));
+				return base.View (masterLayoutModel);
 			}
 		}
 

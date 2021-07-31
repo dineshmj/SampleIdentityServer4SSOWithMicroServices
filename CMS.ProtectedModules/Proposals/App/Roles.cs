@@ -6,6 +6,6 @@
 	/// </summary>
 	public static class Roles
 	{
-		public const string ROLE_MAKE_A_PAYMENT = "Make a Payment";
+		public const string PROPOSALS_MGMT = "Proposals Management";
 	}
 }

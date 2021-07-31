@@ -6,6 +6,6 @@
 	/// </summary>
 	public static class Roles
 	{
-		public const string ROLE_MATURITY_BILLING = "Maturity Billing";
+		public const string QUOTES_MGMT = "Quotes Management";
 	}
 }

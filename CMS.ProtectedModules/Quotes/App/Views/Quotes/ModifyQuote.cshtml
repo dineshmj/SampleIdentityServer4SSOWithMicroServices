@@ -1,6 +1,6 @@
-﻿@using CMS.Proposals.App.Models;
+﻿@using CMS.Quotes.App.Models;
 
-@model PaymentModel
+@model SearchMaturityBillingModel
 
 @{
 	Layout = null;
@@ -11,7 +11,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width" />
-		<title>Search Payments</title>
+		<title>Modify Quote</title>
 		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="~/css/site.css" />
 	</head>
@@ -22,14 +22,14 @@
 
 		<div>
 			<div class="col-lg-6">
-				<h2>Search Payments</h2>
+				<h2>Modify Quote</h2>
 			</div>
 
 			<div style="left:10px">
 				<div class="col-sm-offset-0 col-sm-8">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Enter Payment Search Criteria</h3>
+							<h3 class="panel-title">Enter Maturity Bill Search Criteria</h3>
 						</div>
 						<div class="panel-body">
 							<form>
@@ -38,26 +38,26 @@
 										<tr>
 											<td width="40%">
 												<div class="form-group">
-													<label asp-for="PaymentDueDate" class="control-label"></label>
+													<label asp-for="BillingDateFrom" class="control-label"></label>
 												</div>
 											</td>
 											<td width="60%">
 												<div class="form-group">
-													<input asp-for="PaymentDueDate" class="form-control" />
-													<span asp-validation-for="PaymentDueDate" class="text-danger"></span>
+													<input asp-for="BillingDateFrom" class="form-control" />
+													<span asp-validation-for="BillingDateFrom" class="text-danger"></span>
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<td width="40%">
 												<div class="form-group">
-													<label asp-for="AmountDue" class="control-label"></label>
+													<label asp-for="BillingDateTo" class="control-label"></label>
 												</div>
 											</td>
 											<td width="60%">
 												<div class="form-group">
-													<input asp-for="AmountDue" class="form-control" />
-													<span asp-validation-for="AmountDue" class="text-danger"></span>
+													<input asp-for="BillingDateTo" class="form-control" />
+													<span asp-validation-for="BillingDateTo" class="text-danger"></span>
 												</div>
 											</td>
 										</tr>

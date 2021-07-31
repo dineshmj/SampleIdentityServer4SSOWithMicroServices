@@ -11,23 +11,21 @@ using CMS.Master.App.Models;
 
 namespace CMS.Master.App.Controllers
 {
-	/// <summary>
-	/// The Home MVC controller.
-	/// </summary>
+	// The Home MVC controller.
 	[Authorize]             // ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: Causes this MVC controller to respond, only if the user is signed in.
 	public class HomeController
 		: Controller
 	{
 		public IActionResult Index ()
 		{
-			return (base.View ());
+			return base.View ();
 		}
 
 		public IActionResult About ()
 		{
 			base.ViewData ["Message"] = "Your application description page.";
 
-			return (base.View ());
+			return base.View ();
 		}
 
 		public async Task Logout ()
@@ -45,12 +43,12 @@ namespace CMS.Master.App.Controllers
 		{
 			base.ViewData ["Message"] = "Your contact page.";
 
-			return (base.View ());
+			return base.View ();
 		}
 
 		public IActionResult Error ()
 		{
-			return (base.View (new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier }));
+			return base.View (new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 	}
 }
