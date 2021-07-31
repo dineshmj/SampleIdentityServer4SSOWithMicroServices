@@ -2,10 +2,8 @@
 
 namespace FourWallsInc.Entity.LobApp.CMS
 {
-	/// <summary>
-	/// Represents the brand information the LoB application
-	/// must display.
-	/// </summary>
+	// Represents the brand information the LoB application
+	// must display.
 	[Table (Name = "[dbo].[BrandInfo]")]
 	public sealed class BrandInfo
 	{

@@ -3,10 +3,8 @@ using System.Security.Claims;
 
 namespace FourWallsInc.Entity.SSO
 {
-	/// <summary>
-	/// Represents an LoB application user identified by an Identity Provider
-	/// such as the Identity Server 4.
-	/// </summary>
+	// Represents an LoB application user identified by an Identity Provider
+	// such as the Identity Server 4.
 	public sealed class LobApplicationUser
 	{
 		public string SubjectId { get; set; }

@@ -5,12 +5,7 @@ namespace FourWallsInc.Infrastructure.Serialization
 {
 	public static class ByteExtension
 	{
-		/// <summary>
-		/// Gets an instance of the specified type from byte array specified.
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="byteArray">The byte array.</param>
-		/// <returns></returns>
+		// Gets an instance of the specified type from byte array specified.
 		public static TEntity GetTypeFromBytes<TEntity> (this byte [] byteArray)
 		{
 			if (byteArray == null)
@@ -19,6 +14,7 @@ namespace FourWallsInc.Infrastructure.Serialization
 			}
 
 			var binFormatter = new BinaryFormatter ();
+
 			using (var memoryStream = new MemoryStream (byteArray))
 			{
 				object instance = binFormatter.Deserialize (memoryStream);

@@ -2,10 +2,7 @@
 
 namespace FourWallsInc.Entity.LobApp.CMS
 {
-	/// <summary>
-	/// Represents the CMS user roles.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.Entity.DTOBase" />
+	// Represents the CMS user roles.
 	[Table (Name = "[dbo].[CmsRole]")]
 	public sealed class CmsRole
 		: DTOBase

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -11,18 +10,11 @@ using FourWallsInc.Utilities;
 
 namespace FourWallsInc.DataAccess.Extensions
 {
-	/// <summary>
-	/// Contains extension methods for data access for DTOs.
-	/// </summary>
+	// Contains extension methods for data access for DTOs.
 	public static partial class DtoExtensions
 	{
-		/// <summary>
-		/// Gets a T-SQL parameterized SELECT query for the specified entity with a WHERE
-		/// clause having conditions based on entity's property values.
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="sourceEntity">The source entity.</param>
-		/// <returns></returns>
+		// Gets a T-SQL parameterized SELECT query for the specified entity with a WHERE
+		// clause having conditions based on entity's property values.
 		public static string GetSelectQuery<TEntity>
 			(
 				this TEntity sourceEntity,
@@ -34,13 +26,8 @@ namespace FourWallsInc.DataAccess.Extensions
 		{
 			// Get the table attribute.
 			var tableAttribute = sourceEntity.GetTable<TEntity> ();
-
-			// Does it have one?
 			if (tableAttribute == null)
-			{
-				// No.
 				return (String.Empty);
-			}
 
 			// Get only those properties that are decorated with [Column] attribute.
 			var entityColumnProperties
@@ -50,7 +37,7 @@ namespace FourWallsInc.DataAccess.Extensions
 
 			var selectBuilder = new StringBuilder ();
 			var whereBuilder = new StringBuilder ();
-			bool whereClauseStarted = false;
+			var whereClauseStarted = false;
 
 			var selectClauseCounter = 0;
 			var whereClauseCounter = 0;
@@ -216,33 +203,20 @@ namespace FourWallsInc.DataAccess.Extensions
 			return selectQuery;
 		}
 
-		/// <summary>
-		/// Gets the table attribute of the specified business entity.
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <returns></returns>
+		// Gets the table attribute of the specified business entity.
 		public static TableAttribute GetTable<TEntity> (this TEntity sourceEntity)
 			where TEntity : DTOBase
 		{
 			return typeof (TEntity).GetCustomAttribute<TableAttribute> ();
 		}
 
-		/// <summary>
-		/// Gets the table column attribute of the specified property.
-		/// </summary>
-		/// <param name="property">The property.</param>
-		/// <returns></returns>
+		// Gets the table column attribute of the specified property.
 		public static ColumnAttribute GetTableColumn (this PropertyInfo property)
 		{
 			return property.GetCustomAttribute<ColumnAttribute> ();
 		}
 
-		/// <summary>
-		/// Sets the specified value to the identity primary key property of the entity..
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="entity">The entity.</param>
-		/// <param name="value">The value.</param>
+		// Sets the specified value to the identity primary key property of the entity..
 		public static void SetIdentityPrimaryKeyTo<TEntity> (this TEntity entity, object value)
 			where TEntity : DTOBase
 		{

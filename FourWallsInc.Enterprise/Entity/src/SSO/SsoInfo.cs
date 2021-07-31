@@ -1,9 +1,7 @@
 ﻿namespace FourWallsInc.Entity.SSO
 {
-	/// <summary>
-	/// Represents an LoB application that has several module applications, web and API apps of which
-	/// are protected by an Identity Server 4.
-	/// </summary>
+	// Represents an LoB application that has several module applications, web and API apps of which
+	// are protected by an Identity Server 4.
 	public sealed class SsoInfo
 		: DTOBase
 	{

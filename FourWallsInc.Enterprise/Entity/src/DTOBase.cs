@@ -1,8 +1,6 @@
 ﻿namespace FourWallsInc.Entity
 {
-	/// <summary>
-	/// Abstracts data transfer objects (DTOs).
-	/// </summary>
+	// Abstracts data transfer objects (DTOs).
 	public abstract class DTOBase
 	{
 	}

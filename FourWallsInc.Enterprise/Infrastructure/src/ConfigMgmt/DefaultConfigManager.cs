@@ -2,10 +2,7 @@
 
 namespace FourWallsInc.Infrastructure.ConfigMgmt
 {
-	/// <summary>
-	/// Implements configuration management.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.Infrastructure.ConfigMgmt.IConfigManager" />
+	// Implements configuration management.
 	public sealed class DefaultConfigManager
 		: IConfigManager
 	{
@@ -16,25 +13,16 @@ namespace FourWallsInc.Infrastructure.ConfigMgmt
 			this.configuration = configuration;
 		}
 
-		/// <summary>
-		/// Gets the value for the specified configuration key.
-		/// </summary>
-		/// <param name="configKey">The configuration key.</param>
-		/// <returns></returns>
+		// Gets the value for the specified configuration key.
 		public string GetValueForKey (string configKey)
 		{
-			return (this.configuration [configKey]);
+			return this.configuration [configKey];
 		}
 
-		/// <summary>
-		/// Gets the connection string corresponding to the name specified.
-		/// </summary>
-		/// <param name="connectionStringName">Name of the connection string.</param>
-		/// <returns></returns>
-		/// <exception cref="System.NotImplementedException"></exception>
+		// Gets the connection string corresponding to the name specified.
 		public string GetConnectionString (string connectionStringName)
 		{
-			return (this.configuration.GetConnectionString (connectionStringName));
+			return this.configuration.GetConnectionString (connectionStringName);
 		}
 	}
 }

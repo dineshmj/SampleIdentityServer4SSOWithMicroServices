@@ -1,9 +1,7 @@
 ﻿namespace FourWallsInc.Entity.SSO
 {
-	/// <summary>
-	/// Represents a web application that is part of a pair of web and API applications
-	/// that constitute a module of an LoB application.
-	/// </summary>
+	// Represents a web application that is part of a pair of web and API applications
+	// that constitute a module of an LoB application.
 	public sealed class AppInfo
 		: DTOBase
 	{

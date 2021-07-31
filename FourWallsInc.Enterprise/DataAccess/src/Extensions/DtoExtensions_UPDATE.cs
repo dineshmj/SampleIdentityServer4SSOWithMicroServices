@@ -7,17 +7,10 @@ using FourWallsInc.Utilities;
 
 namespace FourWallsInc.DataAccess.Extensions
 {
-	/// <summary>
-	/// Contains extension methods for data access for DTOs.
-	/// </summary>
+	// Contains extension methods for data access for DTOs.
 	public static partial class DtoExtensions
 	{
-		/// <summary>
-		/// Gets a T-SQL parameterized UPDATE query for the specified entity.
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="sourceEntity">The source entity.</param>
-		/// <returns></returns>
+		// Gets a T-SQL parameterized UPDATE query for the specified entity.
 		public static string GetUpdateQuery<TEntity>
 			(
 				this TEntity sourceEntity,
@@ -27,13 +20,8 @@ namespace FourWallsInc.DataAccess.Extensions
 		{
 			// Get the table attribute.
 			var tableAttribute = sourceEntity.GetTable<TEntity> ();
-
-			// Does it have one?
 			if (tableAttribute == null)
-			{
-				// No.
 				return (String.Empty);
-			}
 
 			// Get the table name.
 			var tableNameToUse
@@ -85,8 +73,8 @@ SET"
 			// Begin VALUES clause.
 			whereBuilder.AppendLine ("WHERE");
 
-			bool atLeastOneColumnAddedInUpdateClause = false;
-			bool atLeastOneColumnAddedInWhereClause = false;
+			var atLeastOneColumnAddedInUpdateClause = false;
+			var atLeastOneColumnAddedInWhereClause = false;
 			var commentTextAfterComma = String.Empty;
 
 			// Walk through the column properties.
@@ -119,7 +107,7 @@ SET"
 							||
 							(
 								!considerDefaultValues      // Do not consider default values.
-								&& propertyType.IsAPrimitiveType ()					// is short, int, float, DateTime, etc.
+								&& propertyType.IsAPrimitiveType ()                 // is short, int, float, DateTime, etc.
 								&& propertyValue.IsPrimitiveTypeDefaultValue () == false
 							)
 						)

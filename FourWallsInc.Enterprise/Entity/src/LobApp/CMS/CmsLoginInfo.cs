@@ -2,9 +2,7 @@
 
 namespace FourWallsInc.Entity.LobApp.CMS
 {
-	/// <summary>
-	/// Represents the authentication credentials of the CMS application.
-	/// </summary>
+	// Represents the authentication credentials of the CMS application.
 	[Table (Name = "[dbo].[CmsLoginInfo]")]
 	public sealed class CmsLoginInfo
 		: DTOBase

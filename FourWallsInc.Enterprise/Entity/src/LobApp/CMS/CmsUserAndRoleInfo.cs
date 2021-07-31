@@ -4,10 +4,7 @@ using FourWallsInc.Entity.EntityAccess;
 
 namespace FourWallsInc.Entity.LobApp.CMS
 {
-	/// <summary>
-	/// Represents information pertaining to users and their roles.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.Entity.DTOBase" />
+	// Represents information pertaining to users and their roles.
 	[Table (Name = "[dbo].[CmsUserAndRoleInfo]")]
 	public sealed class CmsUserAndRoleInfo
 		: DTOBase

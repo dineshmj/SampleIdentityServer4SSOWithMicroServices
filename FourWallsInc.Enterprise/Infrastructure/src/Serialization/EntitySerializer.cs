@@ -10,12 +10,7 @@ namespace FourWallsInc.Infrastructure.Serialization
 		: ISerializer
 	{
 		public IEnumerable<SerializationFormat> SupportedFormats =>
-			(
-				new ReadOnlyCollection<SerializationFormat>
-					(
-						new [] { SerializationFormat.Json }
-					)
-			);
+				new ReadOnlyCollection<SerializationFormat> (new [] { SerializationFormat.Json });
 
 		public string Serialize<TEntity>
 			(
@@ -26,10 +21,10 @@ namespace FourWallsInc.Infrastructure.Serialization
 			switch (serializationFormat)
 			{
 				case SerializationFormat.Json:
-					return (JsonConvert.SerializeObject (entity));
+					return JsonConvert.SerializeObject (entity);
 
 				default:
-					throw (new NotImplementedException ("The specified format '" + serializationFormat + "' is not supported for serialization."));
+					throw new NotImplementedException ("The specified format '" + serializationFormat + "' is not supported for serialization.");
 			}
 		}
 
@@ -42,10 +37,10 @@ namespace FourWallsInc.Infrastructure.Serialization
 			switch (serializationFormat)
 			{
 				case SerializationFormat.Json:
-					return (JsonConvert.DeserializeObject<TEntity> (serializedContent));
+					return JsonConvert.DeserializeObject<TEntity> (serializedContent);
 
 				default:
-					throw (new NotImplementedException ("The specified format '" + serializationFormat + "' is not supported for de-serialization."));
+					throw new NotImplementedException ("The specified format '" + serializationFormat + "' is not supported for de-serialization.");
 			}
 		}
 	}

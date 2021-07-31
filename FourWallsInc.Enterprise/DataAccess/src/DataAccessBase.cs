@@ -13,10 +13,7 @@ using FourWallsInc.Infrastructure.ConfigMgmt;
 
 namespace FourWallsInc.DataAccess
 {
-	/// <summary>
-	/// Abstracts the data access activity for business entities.
-	/// </summary>
-	/// <typeparam name="TEntity">The type of the entity.</typeparam>
+	// Abstracts the data access activity for business entities.
 	public abstract partial class DataAccessBase<TEntity>
 		: IDataAccess<TEntity>
 			where TEntity : DTOBase
@@ -25,17 +22,10 @@ namespace FourWallsInc.DataAccess
 
 		protected DataAccessBase (IConfigManager configManager)
 		{
-			this.connectionString
-				= configManager.GetConnectionString (DAConstants.DEFAULT_CONNECTION);
+			this.connectionString = configManager.GetConnectionString (DAConstants.DEFAULT_CONNECTION);
 		}
 
-		/// <summary>
-		/// Adds a record into the data source.
-		/// </summary>
-		/// <param name="newInstanceToAdd">The new instance to add.</param>
-		/// <returns>
-		/// The primary key value.
-		/// </returns>
+		// Adds a record into the data source.
 		public object AddNew (TEntity newInstanceToAdd)
 		{
 			// Prepare SELECT query, with SCOPE_IDENTITY () being read.
@@ -51,22 +41,14 @@ namespace FourWallsInc.DataAccess
 				// Is the dictionary valid?
 				var dictionaryKeys = dapperSet.Keys.ToArray ();
 				if (dictionaryKeys == null || dictionaryKeys.Length == 0)
-				{
-					return (null);
-				}
+					return null;
 
 				// Return the number of rows affected.
-				return (dapperSet [dictionaryKeys [0]]);
+				return dapperSet [dictionaryKeys [0]];
 			}
 		}
 
-		/// <summary>
-		/// Adds a list of records into the data source.
-		/// </summary>
-		/// <param name="newInstancesToAdd">The new instances to add.</param>
-		/// <returns>
-		/// The primary key values.
-		/// </returns>
+		// Adds a list of records into the data source.
 		public object AddNew (IList<TEntity> newInstancesToAdd)
 		{
 			var listOfPrimaryKeys = new List<object> ();
@@ -77,14 +59,10 @@ namespace FourWallsInc.DataAccess
 				listOfPrimaryKeys.Add (this.AddNew (oneEntity));
 			}
 
-			return (listOfPrimaryKeys);
+			return listOfPrimaryKeys;
 		}
 
-		/// <summary>
-		/// Updates the existing record in the data source.
-		/// </summary>
-		/// <param name="instanceToUpdate">The instance to update.</param>
-		/// <returns></returns>
+		// Updates the existing record in the data source.
 		public int UpdateExisting (TEntity instanceToUpdate)
 		{
 			// Prepare the UPDATE query.
@@ -96,15 +74,11 @@ namespace FourWallsInc.DataAccess
 				var rowsAffected = dbConnection.ExecuteScalar<int> (updateQuery, instanceToUpdate);
 
 				// Return the number of rows affected.
-				return (rowsAffected);
+				return rowsAffected;
 			}
 		}
 
-		/// <summary>
-		/// Updates the existing records in the data source.
-		/// </summary>
-		/// <param name="instancesToUpdate">The instances to update.</param>
-		/// <returns></returns>
+		// Updates the existing records in the data source.
 		public int UpdateExisting (IList<TEntity> instancesToUpdate)
 		{
 			var rowsUpdatedCounter = 0;
@@ -115,41 +89,30 @@ namespace FourWallsInc.DataAccess
 				rowsUpdatedCounter += this.UpdateExisting (oneEntity);
 			}
 
-			return (rowsUpdatedCounter);
+			return rowsUpdatedCounter;
 		}
 
-		/// <summary>
-		/// Deletes the existing record from the data source.
-		/// </summary>
-		/// <param name="instanceToDelete">The instance to delete.</param>
-		/// <returns></returns>
+		// Deletes the existing record from the data source.
 		public int DeleteExisting (TEntity instanceToDelete)
 		{
-			return 1;
+			// return 1;
+			throw new NotImplementedException ();
 		}
 
-		/// <summary>
-		/// Deletes the existing records from the data source.
-		/// </summary>
-		/// <param name="instancesToDelete"></param>
-		/// <returns></returns>
+		// Deletes the existing records from the data source.
 		public int DeleteExisting (IList<TEntity> instancesToDelete)
 		{
-			return 1;
+			// return 1;
+			throw new NotImplementedException ();
 		}
 
 		public TEntity GetFirstMatchingInstance (TEntity searchCriteria)
 		{
-			return (this.GetMatchingInstances (searchCriteria, 1).FirstOrDefault ());
+			return this.GetMatchingInstances (searchCriteria, 1).FirstOrDefault ();
 		}
 
-		/// <summary>
-		/// Gets a list of matching instances corresponding
-		/// to the search criteria specified.
-		/// </summary>
-		/// <param name="searchCriteria">The search criteria.</param>
-		/// <param name="topNRecords">The top 'n' records number.</param>
-		/// <returns></returns>
+		// Gets a list of matching instances corresponding
+		// to the search criteria specified.
 		public IList<TEntity> GetMatchingInstances
 			(
 				TEntity searchCriteria,
@@ -175,7 +138,7 @@ namespace FourWallsInc.DataAccess
 			}
 
 			// Return a readonly list.
-			return (new ReadOnlyCollection<TEntity> (entities));
+			return new ReadOnlyCollection<TEntity> (entities);
 		}
 	}
 }

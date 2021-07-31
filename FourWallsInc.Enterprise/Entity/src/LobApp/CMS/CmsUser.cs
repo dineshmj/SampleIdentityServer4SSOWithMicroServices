@@ -1,11 +1,10 @@
 ﻿using System;
+
 using FourWallsInc.Entity.EntityAccess;
 
 namespace FourWallsInc.Entity.LobApp.CMS
 {
-	/// <summary>
-	/// Represents a CMS application user.
-	/// </summary>
+	// Represents a CMS application user.
 	[Table (Name = "[dbo].[CmsUser]")]
 	public sealed class CmsUser
 		: DTOBase

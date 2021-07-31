@@ -7,17 +7,10 @@ using FourWallsInc.Utilities;
 
 namespace FourWallsInc.DataAccess.Extensions
 {
-	/// <summary>
-	/// Contains extension methods for data access for DTOs.
-	/// </summary>
+	// Contains extension methods for data access for DTOs.
 	public static partial class DtoExtensions
 	{
-		/// <summary>
-		/// Gets a T-SQL parameterized INSERT query for the specified entity.
-		/// </summary>
-		/// <typeparam name="TEntity">The type of the entity.</typeparam>
-		/// <param name="sourceEntity">The source entity.</param>
-		/// <returns></returns>
+		// Gets a T-SQL parameterized INSERT query for the specified entity.
 		public static string GetInsertQuery<TEntity>
 			(
 				this TEntity sourceEntity,
@@ -27,13 +20,8 @@ namespace FourWallsInc.DataAccess.Extensions
 		{
 			// Get the table attribute.
 			var tableAttribute = sourceEntity.GetTable<TEntity> ();
-
-			// Does it have one?
 			if (tableAttribute == null)
-			{
-				// No.
-				return (String.Empty);
-			}
+				return String.Empty;
 
 			// Get only those properties that are decorated with [Column] attribute.
 			var entityColumnProperties
@@ -59,7 +47,7 @@ namespace FourWallsInc.DataAccess.Extensions
 			valuesBuilder.AppendLine ("VALUES");
 			valuesBuilder.AppendLine ("(");
 
-			bool atLeastOneColumnAdded = false;
+			var atLeastOneColumnAdded = false;
 			var commentTextAfterComma = String.Empty;
 
 			// Walk through the column properties.
@@ -107,7 +95,6 @@ namespace FourWallsInc.DataAccess.Extensions
 							}
 
 							insertBuilder.AppendLine ();
-
 							valuesBuilder.AppendLine (",");
 						}
 

@@ -2,10 +2,8 @@
 
 namespace FourWallsInc.Entity.SSO
 {
-	/// <summary>
-	/// Represents a pair of web and API applications
-	/// that constitute a module of an LoB application.
-	/// </summary>
+	// Represents a pair of web and API applications
+	// that constitute a module of an LoB application.
 	public sealed class AppPair
 		: DTOBase
 	{
@@ -15,10 +13,8 @@ namespace FourWallsInc.Entity.SSO
 
 		public ApiInfo Api { get; set; }
 
-		/// <summary>
-		/// Gets or sets the additional API resources of the modules that would be used
-		/// by this master web application.
-		/// </summary>
+		// Gets or sets the additional API resources of the modules that would be used
+		// by this master web application.
 		public IEnumerable<string> AdditionalApiResourcesThatWouldBeUsed { get; set; }
 	}
 }
