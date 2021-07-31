@@ -6,42 +6,26 @@ using CMS.IDP.App.DataAccess;
 
 namespace CMS.IDP.App.Business
 {
-	/// <summary>
-	/// This class contains throw-away business code that goes to the
-	/// LoB application's DB repository, and gets the signing in user's details.
-	/// </summary>
+	// This class contains throw-away business code that goes to the
+	// LoB application's DB repository, and gets the signing in user's details.
 	public sealed class CmsAuthenticationBizFacade
 		: ICmsAuthenticationBizFacade
 	{
 		private readonly ICmsAuthenticationDataAccess authDataAccess;
 
-		public CmsAuthenticationBizFacade
-			(
-				ICmsAuthenticationDataAccess authDataAccess
-			)
+		public CmsAuthenticationBizFacade (ICmsAuthenticationDataAccess authDataAccess)
 		{
 			this.authDataAccess = authDataAccess;
 		}
 
-		#region Methods.
-
-		/// <summary>
-		/// Validates the specified credentials of the signing in user.
-		/// </summary>
-		/// <param name="loginId">The login ID.</param>
-		/// <param name="password">The password.</param>
-		/// <returns></returns>
+		// Validates the specified credentials of the signing in user.
 		public bool ValidateCredentials (string loginId, string password)
 		{
 			var credentialsValid = this.authDataAccess.AreCmsCredentialsValid (loginId, password);
 			return (credentialsValid);
 		}
 
-		/// <summary>
-		/// Gets a LoB application user matching to the specified login ID.
-		/// </summary>
-		/// <param name="loginId">The login ID.</param>
-		/// <returns></returns>
+		// Gets a LoB application user matching to the specified login ID.
 		public LobApplicationUser FindUserByLoginId (string loginId)
 		{
 			// Identify user and roles.
@@ -82,7 +66,5 @@ namespace CMS.IDP.App.Business
 					}
 				);
 		}
-
-		#endregion
 	}
 }

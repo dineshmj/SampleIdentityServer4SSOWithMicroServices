@@ -16,6 +16,7 @@ namespace CMS.Master.Api
 	public class Startup
 	{
 		private readonly IConfiguration configuration;
+		private bool useStubData = false;
 		private SsoInfo ssoInfo;
 
 		public Startup
@@ -24,6 +25,7 @@ namespace CMS.Master.Api
 			)
 		{
 			this.configuration = configuration;
+			this.useStubData = configuration.GetValue<bool> ("UseStubData");
 		}
 
 		// This method gets called by the runtime. Use this method to add services to the container.
@@ -34,7 +36,16 @@ namespace CMS.Master.Api
 
 			// Add the abstractions and their concrete types to the dependency injection container.
 			services.AddScoped<IConfigManager, DefaultConfigManager> ();
-			services.AddScoped<IModuleLinkDataAccess, ModuleLinkDataAccess> ();
+
+			if (this.useStubData)
+			{
+				services.AddScoped<IModuleLinkDataAccess, StubModuleLinkDataAccess> ();
+			}
+			else
+			{
+				services.AddScoped<IModuleLinkDataAccess, ModuleLinkDataAccess> ();
+			}
+			
 			services.AddScoped<ICmsModuleAndLinksBizFacade, CmsModuleAndLinksBizFacade> ();
 
 			// Get the SSO info (about the IDP, master app pair, module app pairs, etc.)

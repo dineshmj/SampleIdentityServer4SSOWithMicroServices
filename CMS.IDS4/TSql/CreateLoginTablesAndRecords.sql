@@ -443,7 +443,7 @@ delete from dbo.CmsUserAndRoleInfo
 go
 
 insert into dbo.CmsUserAndRoleInfo values (104, 10101, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Will Smith, Quotes Management
-insert into dbo.CmsUserAndRoleInfo values (101, 10101, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Tom Hanks, Quotes Archive
+insert into dbo.CmsUserAndRoleInfo values (101, 10101, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Tom Hanks, Quotes Management
 insert into dbo.CmsUserAndRoleInfo values (101, 10102, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Tom Hanks, Quotes Archive
 insert into dbo.CmsUserAndRoleInfo values (101, 10301, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Tom Hanks, Policy Issuance
 insert into dbo.CmsUserAndRoleInfo values (102, 10201, '01-JAN-2000', '31-DEC-2099', 'Y')		-- Steven Spielberg, Proposals Management

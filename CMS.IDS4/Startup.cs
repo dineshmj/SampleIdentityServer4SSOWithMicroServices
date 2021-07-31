@@ -25,6 +25,7 @@ namespace CMS.IDP.App
 	{
 		private readonly IHostingEnvironment environment;
 		private readonly IConfiguration configuration;
+		private bool useStubData = false;
 
 		public Startup
 			(
@@ -34,6 +35,7 @@ namespace CMS.IDP.App
 		{
 			this.environment = environment;
 			this.configuration = configuration;
+			this.useStubData = configuration.GetValue<bool> ("UseStubData");
 		}
 
 		/// <summary>
@@ -50,7 +52,16 @@ namespace CMS.IDP.App
 			services.AddScoped<IConfigManager, DefaultConfigManager> ();
 			services.AddScoped<IDataAccess<CmsLoginInfo>, CmsLoginInfoDataAccess> ();
 			services.AddScoped<ICmsAuthenticationDataAccess, CmsAuthenticationDataAccess> ();
-			services.AddScoped<ICmsAuthenticationBizFacade, CmsAuthenticationBizFacade> ();
+			
+			if (this.useStubData)
+			{
+				services.AddScoped<ICmsAuthenticationBizFacade, StubCmsAuthenticationBizFacade> ();
+			}
+			else
+			{
+				services.AddScoped<ICmsAuthenticationBizFacade, CmsAuthenticationBizFacade> ();
+			}
+
 			services.AddScoped<IProfileService, CmsUserProfileService> ();
 			services.AddScoped<IAspNetCoreWebAndApiAppsDataProvider, AspNetCoreWebAndApiAppsDataProvider> ();
 
