@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 
-using FourWallsInc.Entity.SSO;
 using CMS.IDP.App.DataAccess;
+
+using FourWallsInc.Entity.SSO;
 
 namespace CMS.IDP.App.Business
 {
@@ -36,15 +37,11 @@ namespace CMS.IDP.App.Business
 			var claims = new List<Claim> ();
 
 			// Add the basic claims.
-			claims.AddRange
-				(
-					new []
-					{
-						new Claim (ClaimTypes.Email, cmsUser.Email),
-						new Claim (ClaimTypes.GivenName, cmsUser.FirstName),
-						new Claim (ClaimTypes.Surname, cmsUser.LastName)
-					}
-				);
+			claims.AddRange (new [] {
+					new Claim (ClaimTypes.Email, cmsUser.Email),
+					new Claim (ClaimTypes.GivenName, cmsUser.FirstName),
+					new Claim (ClaimTypes.Surname, cmsUser.LastName)
+				});
 
 			// Add the claims from the DB (i.e., the "roles")
 			foreach (var oneRole in rolesFromDb)
@@ -53,18 +50,14 @@ namespace CMS.IDP.App.Business
 			}
 
 			// Prepare the LoB application user with claims.
-			return
-				(
-					new LobApplicationUser
-					{
-						// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ CRISIS: cmsUser.Id.ToString () cannot be specified because login ID is more required often.
-						// Check the CRISIS part in the CmsUserProfileService for more details.
-						SubjectId = loginId,
-						Username = loginId,
-						Password = null,			// Deliberately removed the password.
-						Claims = claims.ToArray ()
-					}
-				);
+			return new LobApplicationUser {
+					// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ CRISIS: cmsUser.Id.ToString () cannot be specified because login ID is more required often.
+					// Check the CRISIS part in the CmsUserProfileService for more details.
+					SubjectId = loginId,
+					Username = loginId,
+					Password = null,			// Deliberately removed the password.
+					Claims = claims.ToArray ()
+				};
 		}
 	}
 }

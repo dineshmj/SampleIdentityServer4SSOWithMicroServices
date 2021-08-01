@@ -4,10 +4,7 @@ using FourWallsInc.Infrastructure.ConfigMgmt;
 
 namespace CMS.IDP.App.DataAccess
 {
-	/// <summary>
-	/// A data access class for CmsLoginInfo.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.DataAccess.DataAccessBase{FourWallsInc.Entity.LobApp.CMS.CmsLoginInfo}" />
+	// A data access class for CmsLoginInfo.
 	public sealed class CmsLoginInfoDataAccess
 		: DataAccessBase<CmsLoginInfo>
 	{

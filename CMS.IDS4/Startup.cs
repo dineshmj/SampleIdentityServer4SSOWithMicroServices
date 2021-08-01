@@ -8,24 +8,23 @@ using Microsoft.Extensions.DependencyInjection;
 
 using IdentityServer4.Services;
 
-using FourWallsInc.DataAccess;
-using FourWallsInc.Entity.LobApp.CMS;
-using FourWallsInc.Entity.SSO;
-using FourWallsInc.Infrastructure.ConfigMgmt;
 using CMS.IDP.App.Business;
 using CMS.IDP.App.Business.SSO;
 using CMS.IDP.App.DataAccess;
 
+using FourWallsInc.DataAccess;
+using FourWallsInc.Entity.LobApp.CMS;
+using FourWallsInc.Entity.SSO;
+using FourWallsInc.Infrastructure.ConfigMgmt;
+
 namespace CMS.IDP.App
 {
-	/// <summary>
-	/// Starts up the IDP web app.
-	/// </summary>
+	// Starts up the IDP web app.
 	public class Startup
 	{
 		private readonly IHostingEnvironment environment;
 		private readonly IConfiguration configuration;
-		private bool useStubData = false;
+		private readonly bool useStubData = false;
 
 		public Startup
 			(
@@ -38,10 +37,7 @@ namespace CMS.IDP.App
 			this.useStubData = configuration.GetValue<bool> ("UseStubData");
 		}
 
-		/// <summary>
-		/// Helps configure the services that are associated with this IDP.
-		/// </summary>
-		/// <param name="services">The services collection.</param>
+		// Helps configure the services that are associated with this IDP.
 		public void ConfigureServices (IServiceCollection services)
 		{
 			// ↓↓ CATCH: Read the SSO related info from appSettings.json.
@@ -101,11 +97,7 @@ namespace CMS.IDP.App
 				// Tells that this IDP is going to use MVC to show its authentication and consent screens.
 		}
 
-		/// <summary>
-		/// Helps configure this web app.
-		/// </summary>
-		/// <param name="app">The application.</param>
-		/// <param name="env">The environment.</param>
+		// Helps configure this web app.
 		public void Configure
 			(
 				IApplicationBuilder app,

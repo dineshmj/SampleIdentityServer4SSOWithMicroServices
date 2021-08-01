@@ -10,10 +10,8 @@ using FourWallsInc.Entity.SSO;
 
 namespace CMS.IDP.App.Business.SSO
 {
-	/// <summary>
-	/// Contains implemnetations for fetching of API resources and clients
-	/// of the protected applications.
-	/// </summary>
+	// Contains implemnetations for fetching of API resources and clients
+	// of the protected applications.
 	public sealed class AspNetCoreWebAndApiAppsDataProvider
 		: IAspNetCoreWebAndApiAppsDataProvider
 	{
@@ -25,10 +23,7 @@ namespace CMS.IDP.App.Business.SSO
 			this.ssoInfo = ssoInfoOptions.Value;
 		}
 
-		/// <summary>
-		/// Gets the API resources of protected services.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the API resources of protected services.
 		public IEnumerable<ApiResource> GetApiResourcesOfProtectedServices ()
 		{
 			var apiResourcesList
@@ -66,10 +61,7 @@ namespace CMS.IDP.App.Business.SSO
 			return apiResourcesList;
 		}
 
-		/// <summary>
-		/// Gets the clients of protected apps.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the clients of protected apps.
 		public IEnumerable<Client> GetClientsOfProtectedApps ()
 		{
 			// Prepare a fresh list of clients.
@@ -86,10 +78,7 @@ namespace CMS.IDP.App.Business.SSO
 			return clients;
 		}
 
-		/// <summary>
-		/// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ INCOMPLETE CATCH: Gets the identity resource.
-		/// </summary>
-		/// <returns></returns>
+		// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ INCOMPLETE CATCH: Gets the identity resource.
 		public IEnumerable<IdentityResource> GetIdentityResources ()
 		{
 			return new IdentityResource []
@@ -100,12 +89,7 @@ namespace CMS.IDP.App.Business.SSO
 				};
 		}
 
-		#region Private methods.
-
-		/// <summary>
-		/// Gets the master client.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the master client.
 		private Client GetMasterClient ()
 		{
 			var masterClient
@@ -154,10 +138,7 @@ namespace CMS.IDP.App.Business.SSO
 			return masterClient;
 		}
 
-		/// <summary>
-		/// Gets the module clients.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the module clients.
 		private IList<Client> GetModuleClients ()
 		{
 			return
@@ -198,10 +179,7 @@ namespace CMS.IDP.App.Business.SSO
 					.ToList ();
 		}
 
-		/// <summary>
-		/// Gets the master client scopes.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the master client scopes.
 		private string [] GetMasterClientScopes ()
 		{
 			// Prepare a fresh list of allowed scopes.
@@ -228,11 +206,7 @@ namespace CMS.IDP.App.Business.SSO
 			return (allowedScopes.ToArray ());
 		}
 
-		/// <summary>
-		/// Gets the module client scopes.
-		/// </summary>
-		/// <param name="moduleAppPair">The module application pair.</param>
-		/// <returns></returns>
+		// Gets the module client scopes.
 		private string [] GetModuleClientScopes (AppPair moduleAppPair)
 		{
 			// Prepare a fresh list of allowed scopes.
@@ -247,10 +221,7 @@ namespace CMS.IDP.App.Business.SSO
 			return allowedScopes.ToArray ();
 		}
 
-		/// <summary>
-		/// Gets the minimum required scopes for a protected client application.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the minimum required scopes for a protected client application.
 		private string [] GetMinimumRequiredScopes ()
 		{
 			return
@@ -263,7 +234,5 @@ namespace CMS.IDP.App.Business.SSO
 					}
 				);
 		}
-
-		#endregion
 	}
 }

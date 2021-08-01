@@ -7,31 +7,20 @@ using IdentityServer4.Services;
 
 namespace CMS.IDP.App.Business
 {
-	/// <summary>
-	/// Contains necessary logic to connect this IDP to the protected applications' DB store
-	/// where this IDP can get to know about the user's details, roles, etc.
-	/// </summary>
+	// Contains necessary logic to connect this IDP to the protected applications' DB store
+	// where this IDP can get to know about the user's details, roles, etc.
 	public class CmsUserProfileService
 		: IProfileService
 	{
 		private readonly ICmsAuthenticationBizFacade cmsAuthBizFacade;
 
-		public CmsUserProfileService
-			(
-				ICmsAuthenticationBizFacade cmsAuthBizFacade
-			)
+		public CmsUserProfileService (ICmsAuthenticationBizFacade cmsAuthBizFacade)
 		{
 			this.cmsAuthBizFacade = cmsAuthBizFacade;
 		}
 
-		#region Methods.
-
-		/// <summary>
-		/// This method is called whenever claims about the user are requested
-		/// (e.g., during token creation or via the userinfo endpoint.)
-		/// </summary>
-		/// <param name="context">The profile data request context.</param>
-		/// <returns></returns>
+		// This method is called whenever claims about the user are requested
+		// (e.g., during token creation or via the userinfo endpoint.)
 		public Task GetProfileDataAsync (ProfileDataRequestContext context)
 		{
 			// Get the login ID.
@@ -59,16 +48,12 @@ namespace CMS.IDP.App.Business
 			// Get all the claims that this authenticated user has.
 			context.IssuedClaims = signedInLobApplicationUser?.Claims.ToList ();
 
-			return (Task.FromResult (0));
+			return Task.FromResult (0);
 		}
 
-		/// <summary>
-		/// This method gets called whenever identity server needs to determine if the user
-		/// is valid or active (e.g. if the user's account has been deactivated since they
-		/// logged in). (e.g. during token issuance or validation).
-		/// </summary>
-		/// <param name="context">The "is active" context.</param>
-		/// <returns></returns>
+		// This method gets called whenever identity server needs to determine if the user
+		// is valid or active (e.g. if the user's account has been deactivated since they
+		// logged in). (e.g. during token issuance or validation).
 		public Task IsActiveAsync (IsActiveContext context)
 		{
 			// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: As of now, this is hard-coded to TRUE. You can run your logic
@@ -77,7 +62,5 @@ namespace CMS.IDP.App.Business
 
 			return Task.FromResult (0);
 		}
-
-		#endregion
 	}
 }

@@ -4,31 +4,16 @@ using FourWallsInc.Entity.LobApp.CMS;
 
 namespace CMS.IDP.App.DataAccess
 {
-	/// <summary>
-	/// Abstracts the authentication related tasks.
-	/// </summary>
+	// Abstracts the authentication related tasks.
 	public interface ICmsAuthenticationDataAccess
 	{
-		/// <summary>
-		/// Checks if the specified CMS credentials are valid.
-		/// </summary>
-		/// <param name="loginId">The login ID.</param>
-		/// <param name="password">The password.</param>
-		/// <returns></returns>
+		// Checks if the specified CMS credentials are valid.
 		bool AreCmsCredentialsValid (string loginId, string password);
 
-		/// <summary>
-		/// Gets the roles of the specified login ID.
-		/// </summary>
-		/// <param name="loginId">The login ID.</param>
-		/// <returns></returns>
+		// Gets the roles of the specified login ID.
 		IList<CmsRole> GetRolesOf (string loginId);
 
-		/// <summary>
-		/// Gets the CMS user corresponding to the login ID specified.
-		/// </summary>
-		/// <param name="loginId">The login ID.</param>
-		/// <returns></returns>
+		// Gets the CMS user corresponding to the login ID specified.
 		CmsUser GetCmsUserOf (string loginId);
 	}
 }

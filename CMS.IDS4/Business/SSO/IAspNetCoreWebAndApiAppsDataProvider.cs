@@ -4,27 +4,16 @@ using IdentityServer4.Models;
 
 namespace CMS.IDP.App.Business.SSO
 {
-	/// <summary>
-	/// Abstracts the fetching of API resources and clients of the protected applications.
-	/// </summary>
+	// Abstracts the fetching of API resources and clients of the protected applications.
 	public interface IAspNetCoreWebAndApiAppsDataProvider
 	{
-		/// <summary>
-		/// Gets the API resources of protected services.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the API resources of protected services.
 		IEnumerable<ApiResource> GetApiResourcesOfProtectedServices ();
 
-		/// <summary>
-		/// Gets the clients of protected apps.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the clients of protected apps.
 		IEnumerable<Client> GetClientsOfProtectedApps ();
 
-		/// <summary>
-		/// Gets the identity resource.
-		/// </summary>
-		/// <returns></returns>
+		// Gets the identity resource.
 		IEnumerable<IdentityResource> GetIdentityResources ();
 	}
 }
