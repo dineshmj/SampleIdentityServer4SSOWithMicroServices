@@ -19,8 +19,7 @@ namespace Given_that_an_entity_class_with_Table_and_Column_attributes_and_has_va
 		{
 			// Prepare the test entities.
 			this.entityWithTableAndColumnButNoName
-				= new EntityWithNameForAttributesBothTableAndColumn
-				{
+				= new EntityWithNameForAttributesBothTableAndColumn {
 						Id = 102,				// Regular primary key.
 						FirstName = "John",
 						LastName = "Smith",

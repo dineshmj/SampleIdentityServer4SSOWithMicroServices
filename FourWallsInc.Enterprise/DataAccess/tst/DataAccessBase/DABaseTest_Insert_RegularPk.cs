@@ -13,9 +13,7 @@ namespace Given_that_a_DB_table_with_regular_PK_and_corresponding_attribute_deco
 	[TestClass]
 	public sealed class When_I_call_the_AddNew_method_to_insert_a_new_record
 	{
-		/// <summary>
-		/// Helps prepare dummy test tables in the DB with test records.
-		/// </summary>
+		// Helps prepare dummy test tables in the DB with test records.
 		[TestInitialize]
 		public void Initialize ()
 		{
@@ -36,11 +34,10 @@ namespace Given_that_a_DB_table_with_regular_PK_and_corresponding_attribute_deco
 			var regularPkDataAccess = new RegularPkDataAccess (configManager.Object);
 
 			var newRecordToInsert
-				= new ExtremelyUnlikelyTableWithRegularPk
-				{
-					Id = 2000,          // Primary key value is given in the INSERT statement.
-					TestColumn = "Some value."
-				};
+				= new ExtremelyUnlikelyTableWithRegularPk {
+						Id = 2000,          // Primary key value is given in the INSERT statement.
+						TestColumn = "Some value."
+					};
 
 			// Call the target method.
 			var primaryKeyOfNewRecord = regularPkDataAccess.AddNew (newRecordToInsert);
@@ -63,19 +60,16 @@ namespace Given_that_a_DB_table_with_regular_PK_and_corresponding_attribute_deco
 			var regularPkDataAccess = new RegularPkDataAccess (configManager.Object);
 
 			var newRecordsToInsert
-				= new []
-				{
-					new ExtremelyUnlikelyTableWithRegularPk
-					{
-						Id = 2000,          // Primary key value is given in the INSERT statement.
-						TestColumn = "Some value."
-					},
-					new ExtremelyUnlikelyTableWithRegularPk
-					{
-						Id = 4000,          // Primary key value is given in the INSERT statement.
-						TestColumn = "Some other value."
-					},
-				};
+				= new [] {
+						new ExtremelyUnlikelyTableWithRegularPk {
+								Id = 2000,          // Primary key value is given in the INSERT statement.
+								TestColumn = "Some value."
+							},
+						new ExtremelyUnlikelyTableWithRegularPk {
+								Id = 4000,          // Primary key value is given in the INSERT statement.
+								TestColumn = "Some other value."
+							},
+					};
 
 			// Call the target method.
 			var primaryKeysOfNewRecords = (IList<object>) regularPkDataAccess.AddNew (newRecordsToInsert);
@@ -85,9 +79,7 @@ namespace Given_that_a_DB_table_with_regular_PK_and_corresponding_attribute_deco
 			primaryKeysOfNewRecords.Count.Should ().Be (2);
 		}
 
-		/// <summary>
-		/// Cleans up the debri in the DB that were created for testing purpose.
-		/// </summary>
+		// Cleans up the debri in the DB that were created for testing purpose.
 		[TestCleanup]
 		public void CleanUp ()
 		{

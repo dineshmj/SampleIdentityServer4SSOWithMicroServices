@@ -12,7 +12,8 @@ using CMS.Quotes.App.Models;
 namespace CMS.Quotes.App.Controllers
 {
 	[Authorize]
-	public class HomeController : Controller
+	public sealed class HomeController
+		: Controller
 	{
 		public IActionResult Index ()
 		{

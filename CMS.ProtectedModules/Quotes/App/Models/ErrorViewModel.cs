@@ -1,6 +1,6 @@
-namespace CMS.Quotes.App.Models
+﻿namespace CMS.Quotes.App.Models
 {
-    public class ErrorViewModel
+    public sealed class ErrorViewModel
     {
         public string RequestId { get; set; }
 

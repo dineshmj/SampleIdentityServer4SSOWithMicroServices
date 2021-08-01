@@ -3,10 +3,7 @@ using FourWallsInc.Entity.EntityAccess;
 
 namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 {
-	/// <summary>
-	/// A test table tagged to be having a regular primary key.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.Entity.DTOBase" />
+	// A test table tagged to be having a regular primary key.
 	[Table]
 	public sealed class ExtremelyUnlikelyTableWithRegularPk
 		: DTOBase

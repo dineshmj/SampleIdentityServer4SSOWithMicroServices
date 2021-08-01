@@ -1,20 +1,14 @@
 ﻿namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 {
-	/// <summary>
-	/// Contains DML and DDL SQL queries to create temporary DB tables
-	/// and temporary records.
-	/// </summary>
+	// Contains DML and DDL SQL queries to create temporary DB tables
+	// and temporary records.
 	public static class DdlAndDmlConstants
 	{
-		/// <summary>
-		/// The connection string.
-		/// </summary>
-		public const string CONNECTION_STRING = @"Server = VANAMALA\SQLEXPRESS_DINSH; Database = MicroSvcLobDB; Trusted_Connection = True; MultipleActiveResultSets = true";
+		// The connection string.
+		public const string CONNECTION_STRING = @"Server = DINESH-PC\SQLEXPRESS; Database=MicroSvcLobDB; Trusted_Connection=True; MultipleActiveResultSets=true";
 
-		/// <summary>
-		/// The T-SQL statements for creating temporary table with
-		/// identity column based primary key.
-		/// </summary>
+		// The T-SQL statements for creating temporary table with
+		// identity column based primary key.
 		public const string DDL_CREATE_IDENTITY_PK_TABLE_QUERY =
 @"IF (EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = 'ExtremelyUnlikelyTableWithIdentityPk')) BEGIN
     DROP TABLE [dbo].[ExtremelyUnlikelyTableWithIdentityPk]
@@ -33,20 +27,16 @@ CREATE TABLE [dbo].[ExtremelyUnlikelyTableWithIdentityPk](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]";
 
-		/// <summary>
-		/// The T-SQL statements for dropping temporary table with
-		/// identity column based primary key.
-		/// </summary>
+		// The T-SQL statements for dropping temporary table with
+		// identity column based primary key.
 		public const string DDL_DROP_IDENTITY_PK_TABLE_QUERY =
 @"DELETE FROM [dbo].[ExtremelyUnlikelyTableWithIdentityPk]
 
 IF (EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = 'ExtremelyUnlikelyTableWithIdentityPk')) BEGIN
     DROP TABLE [dbo].[ExtremelyUnlikelyTableWithIdentityPk]
 END";
-		/// <summary>
-		/// The T-SQL statements for creating temporary table with
-		/// regular primary key (i.e., not based on Identity column).
-		/// </summary>
+		// The T-SQL statements for creating temporary table with
+		// regular primary key (i.e., not based on Identity column).
 		public const string DDL_CREATE_REGULAR_PK_TABLE_QUERY =
 @"
 IF (EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = 'ExtremelyUnlikelyTableWithRegularPk')) BEGIN
@@ -62,20 +52,16 @@ CREATE TABLE [dbo].[ExtremelyUnlikelyTableWithRegularPk](
 	[TestColumn] [varchar](50) NOT NULL
 ) ON [PRIMARY]";
 
-		/// <summary>
-		/// The T-SQL statements for dropping temporary table with
-		/// regular primary key.
-		/// </summary>
+		// The T-SQL statements for dropping temporary table with
+		// regular primary key.
 		public const string DDL_DROP_REGULAR_PK_TABLE_QUERY =
 @"DELETE FROM [dbo].[ExtremelyUnlikelyTableWithRegularPk]
 
 IF (EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = 'ExtremelyUnlikelyTableWithRegularPk')) BEGIN
     DROP TABLE [dbo].[ExtremelyUnlikelyTableWithRegularPk]
 END";
-		/// <summary>
-		/// The DML T-SQL statements for inserting data into test table with
-		/// identity column based primary key.
-		/// </summary>
+		// The DML T-SQL statements for inserting data into test table with
+		// identity column based primary key.
 		public const string DML_INSERT_INTO_IDENTITY_PK_TABLE_QUERY =
 @"DELETE FROM [dbo].[ExtremelyUnlikelyTableWithIdentityPk]
 
@@ -84,10 +70,8 @@ INSERT INTO [dbo].[ExtremelyUnlikelyTableWithIdentityPk] (TestColumn) VALUES ('d
 INSERT INTO [dbo].[ExtremelyUnlikelyTableWithIdentityPk] (TestColumn) VALUES ('ghi')
 INSERT INTO [dbo].[ExtremelyUnlikelyTableWithIdentityPk] (TestColumn) VALUES ('jkl')";
 
-		/// <summary>
-		/// The DML T-SQL statements for inserting data into test table with
-		/// regular primary key.
-		/// </summary>
+		// The DML T-SQL statements for inserting data into test table with
+		// regular primary key.
 		public const string DML_INSERT_INTO_REGULAR_PK_TABLE_QUERY =
 @"DELETE FROM [dbo].[ExtremelyUnlikelyTableWithRegularPk]
 

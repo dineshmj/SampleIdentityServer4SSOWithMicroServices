@@ -11,9 +11,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 	[TestClass]
 	public sealed class When_I_call_the_methods_for_fetching_records_on_DataAccess_class_with_an_empty_search_criteria
 	{
-		/// <summary>
-		/// Helps prepare dummy test tables in the DB with test records.
-		/// </summary>
+		// Helps prepare dummy test tables in the DB with test records.
 		[TestInitialize]
 		public void Initialize ()
 		{
@@ -67,9 +65,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			listOfUsers.Count.Should ().Be (4);
 		}
 
-		/// <summary>
-		/// Cleans up the debri in the DB that were created for testing purpose.
-		/// </summary>
+		// Cleans up the debri in the DB that were created for testing purpose.
 		[TestCleanup]
 		public void CleanUp ()
 		{

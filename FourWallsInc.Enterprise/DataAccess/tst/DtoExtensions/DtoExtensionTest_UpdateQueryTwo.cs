@@ -20,8 +20,7 @@ namespace Given_that_an_entity_class_with_Table_attribute_but_no_Name_value_is_a
 		{
 			// Prepare the first test entity.
 			this.firstEntityWithTableAndColumnButNoName
-				= new EntityWithAttributesTableAndColumnOnly
-					{
+				= new EntityWithAttributesTableAndColumnOnly {
 						// REMEMBER: For this test, the primary key column ("Id") value is not specified.
 						FirstName = "John",
 						LastName = "Smith",
@@ -31,14 +30,13 @@ namespace Given_that_an_entity_class_with_Table_attribute_but_no_Name_value_is_a
 
 			// Prepare the second test entity.
 			this.secondEntityWithTableAndColumnButNoName
-				= new EntityWithAttributesTableAndColumnOnly
-				{
-					Id = 20, // REMEMBER: For this test, we are giving value for the primary key.
-					FirstName = "John",
-					LastName = "Smith",
-					BirthDate = new DateTime (1990, 1, 1),
-					InstancesCount = 20
-				};
+				= new EntityWithAttributesTableAndColumnOnly {
+						Id = 20, // REMEMBER: For this test, we are giving value for the primary key.
+						FirstName = "John",
+						LastName = "Smith",
+						BirthDate = new DateTime (1990, 1, 1),
+						InstancesCount = 20
+					};
 		}
 
 		[TestMethod]

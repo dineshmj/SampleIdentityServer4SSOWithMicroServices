@@ -21,10 +21,7 @@ namespace CMS.Quotes.App
 		private AppPair moduleAppPair;
 		private string idpServerUri;
 
-		public Startup
-			(
-				IConfiguration configuration
-			)
+		public Startup (IConfiguration configuration)
 		{
 			this.configuration = configuration;
 		}
@@ -98,36 +95,30 @@ namespace CMS.Quotes.App
 				app.UseExceptionHandler ("/Home/Error");
 			}
 
-			app.UseCsp (csp =>
-			 {
-				 csp.AllowFrames.FromAnywhere ();
-				 csp.AllowScripts
-						 .FromSelf ()
-						 .From ("ajax.aspnetcdn.com");
-				 csp.AllowStyles
-						 .FromSelf ()
-						 .From ("ajax.aspnetcdn.com");
-			 });
+			app.UseCsp (csp => {
+					 csp.AllowFrames.FromAnywhere ();
+					 csp.AllowScripts
+							 .FromSelf ()
+							 .From ("ajax.aspnetcdn.com");
+					 csp.AllowStyles
+							 .FromSelf ()
+							 .From ("ajax.aspnetcdn.com");
+				 });
 
 			//JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 			app.UseAuthentication ();
 			app.UseStaticFiles ();
 
-			app.UseMvc (routes =>
-			 {
-				 routes.MapRoute
-					 (
-						  name: "default",
-						  template: "{controller=Home}/{action=Index}/{id?}"
-					 );
-			 });
+			app.UseMvc (routes => {
+					 routes.MapRoute
+						 (
+							  name: "default",
+							  template: "{controller=Home}/{action=Index}/{id?}"
+						 );
+				 });
 		}
 
-		/// <summary>
-		/// Sets the 
-		/// </summary>
-		/// <param name="options"></param>
 		private void SetOpenIdConnectOptionsHybrid (OpenIdConnectOptions options)
 		{
 			options.Authority = this.idpServerUri;

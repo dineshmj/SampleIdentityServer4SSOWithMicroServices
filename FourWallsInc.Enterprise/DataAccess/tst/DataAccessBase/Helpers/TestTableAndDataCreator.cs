@@ -4,9 +4,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 {
 	public static class TestTableAndDataCreator
 	{
-		/// <summary>
-		/// Creates the test table with identity primary key.
-		/// </summary>
+		// Creates the test table with identity primary key.
 		public static void CreateTestTableWithIdentityPrimaryKey ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -14,9 +12,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 			ExecuteDdlQuery (connection, tableCreateQuery);
 		}
 
-		/// <summary>
-		/// Drops the test table with identity primary key.
-		/// </summary>
+		// Drops the test table with identity primary key.
 		public static void DeleteRecordsAndDropTestTableWithIdentityPrimaryKey ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -24,9 +20,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 			ExecuteDdlQuery (connection, tableDropQuery);
 		}
 
-		/// <summary>
-		/// Creates the test table with regular primary key.
-		/// </summary>
+		// Creates the test table with regular primary key.
 		public static void CreateTestTableWithRegularPrimaryKey ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -34,9 +28,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 			ExecuteDdlQuery (connection, tableCreateQuery);
 		}
 
-		/// <summary>
-		/// Drops the test table with regular primary key.
-		/// </summary>
+		// Drops the test table with regular primary key.
 		public static void DeleteRecordsAndDropTestTableWithRegularPrimaryKey ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -44,9 +36,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 			ExecuteDdlQuery (connection, tableDropQuery);
 		}
 
-		/// <summary>
-		/// Inserts test data for test table with identity column based primary key.
-		/// </summary>
+		// Inserts test data for test table with identity column based primary key.
 		public static void InsertTestDataForIdentityPkTable ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -54,9 +44,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 			ExecuteDdlQuery (connection, insertRecordsQuery);
 		}
 
-		/// <summary>
-		/// Inserts test data for test table with regular primary key.
-		/// </summary>
+		// Inserts test data for test table with regular primary key.
 		public static void InsertTestDataForRegularPkTable ()
 		{
 			var connection = new SqlConnection (DdlAndDmlConstants.CONNECTION_STRING);
@@ -66,11 +54,7 @@ namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 
 		#region Private static methods.
 
-		/// <summary>
-		/// Executes the DDL query.
-		/// </summary>
-		/// <param name="connection">The SQL connection.</param>
-		/// <param name="ddlQuery">The DDL query.</param>
+		// Executes the DDL query.
 		private static void ExecuteDdlQuery (SqlConnection connection, string ddlQuery)
 		{
 			var sqlCommand = new SqlCommand (ddlQuery, connection);

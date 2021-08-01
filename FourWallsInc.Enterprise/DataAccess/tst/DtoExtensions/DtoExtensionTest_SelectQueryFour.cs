@@ -19,8 +19,7 @@ namespace Given_that_an_entity_class_with_Table_and_Column_attributes_and_has_va
 		{
 			// Prepare the test entities.
 			this.entityWithTableAndColumnAndHasNameValues
-				= new EntityWithNameForAttributesBothTableAndColumn
-					{
+				= new EntityWithNameForAttributesBothTableAndColumn {
 						FirstName = "John",		// NOTE: The "LastName" is left as NULL.
 						BirthDate = new DateTime (1990, 1, 1),
 						InstancesCount = 20

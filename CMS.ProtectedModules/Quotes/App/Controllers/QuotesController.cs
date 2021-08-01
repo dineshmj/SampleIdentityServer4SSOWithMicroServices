@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CMS.Quotes.App.Controllers
 {
 	[Authorize]
-	public class QuotesController
+	public sealed class QuotesController
 		: Controller
 	{
 		// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: The following "role" based authorization control restricts

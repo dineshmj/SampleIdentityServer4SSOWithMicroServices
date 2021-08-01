@@ -19,8 +19,7 @@ namespace Given_that_an_entity_class_with_Table_attribute_but_no_Name_value_is_a
 		{
 			// Prepare the test entities.
 			this.entityWithTableAndColumnButNoName
-				= new EntityWithAttributesTableAndColumnOnly
-					{
+				= new EntityWithAttributesTableAndColumnOnly {
 						FirstName = "John",
 						LastName = "Smith",
 						BirthDate = new DateTime (1990, 1, 1),

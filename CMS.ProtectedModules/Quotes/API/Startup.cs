@@ -58,13 +58,9 @@ namespace CMS.Quotes.Api
 
 			services.AddMemoryCache ();
 
-			services.Configure<CookieAuthenticationOptions>
-				(
-					x =>
-					{
-						x.SessionStore = new MemoryCacheTicketStore ();
-					}
-				);
+			services.Configure<CookieAuthenticationOptions> (x => {
+					x.SessionStore = new MemoryCacheTicketStore ();
+				});
 
 			services.AddMvc ();
 		}

@@ -13,9 +13,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 	[TestClass]
 	public sealed class When_I_call_the_AddNew_method_to_insert_a_new_record
 	{
-		/// <summary>
-		/// Helps prepare dummy test tables in the DB with test records.
-		/// </summary>
+		// Helps prepare dummy test tables in the DB with test records.
 		[TestInitialize]
 		public void Initialize ()
 		{
@@ -36,10 +34,9 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			var identityPkDataAccess = new IdentityPkDataAccess (configManager.Object);
 
 			var newRecordToInsert
-				= new ExtremelyUnlikelyTableWithIdentityPk
-				{
-					TestColumn = "Some value."
-				};
+				= new ExtremelyUnlikelyTableWithIdentityPk {
+						TestColumn = "Some value."
+					};
 
 			// Call the target method.
 			var primaryKeyOfNewRecord = (int) identityPkDataAccess.AddNew (newRecordToInsert);
@@ -63,14 +60,12 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			var newRecordsToInsert
 				= new []
 				{
-					new ExtremelyUnlikelyTableWithIdentityPk
-					{
-						TestColumn = "Some value."
-					},
-					new ExtremelyUnlikelyTableWithIdentityPk
-					{
-						TestColumn = "Some other value."
-					}
+					new ExtremelyUnlikelyTableWithIdentityPk {
+							TestColumn = "Some value."
+						},
+					new ExtremelyUnlikelyTableWithIdentityPk {
+							TestColumn = "Some other value."
+						}
 				};
 
 			// Call the target method.
@@ -80,9 +75,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			primaryKeysOfNewRecords.Count.Should ().Be (2);
 		}
 
-		/// <summary>
-		/// Cleans up the debri in the DB that were created for testing purpose.
-		/// </summary>
+		// Cleans up the debri in the DB that were created for testing purpose.
 		[TestCleanup]
 		public void CleanUp ()
 		{

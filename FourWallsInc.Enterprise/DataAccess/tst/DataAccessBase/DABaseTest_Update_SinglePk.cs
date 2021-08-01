@@ -14,9 +14,7 @@ namespace Given_that_a_DB_table_with_single_column_PK_and_corresponding_attribut
 	[TestClass]
 	public sealed class When_I_call_the_UpdateExisting_method_to_update_an_existing_record
 	{
-		/// <summary>
-		/// Helps prepare dummy test tables in the DB with test records.
-		/// </summary>
+		// Helps prepare dummy test tables in the DB with test records.
 		[TestInitialize]
 		public void Initialize ()
 		{
@@ -38,11 +36,10 @@ namespace Given_that_a_DB_table_with_single_column_PK_and_corresponding_attribut
 			var regularPkDataAccess = new RegularPkDataAccess (configManager.Object);
 
 			var existingRecordToUpdate
-				= new ExtremelyUnlikelyTableWithRegularPk
-				{
-					Id = 2,          // Primary key value is given in the INSERT statement.
-					TestColumn = "ghi changed to xyz"
-				};
+				= new ExtremelyUnlikelyTableWithRegularPk {
+						Id = 2,          // Primary key value is given in the INSERT statement.
+						TestColumn = "ghi changed to xyz"
+					};
 
 			// Call the target method.
 			var numberOfRowsAffected = regularPkDataAccess.UpdateExisting (existingRecordToUpdate);
@@ -74,18 +71,15 @@ namespace Given_that_a_DB_table_with_single_column_PK_and_corresponding_attribut
 			var regularPkDataAccess = new RegularPkDataAccess (configManager.Object);
 
 			var existingRecordsToUpdate
-				= new []
-				{
-					new ExtremelyUnlikelyTableWithRegularPk
-					{
-						Id = 2,          // Primary key value is given in the INSERT statement.
-						TestColumn = "ghi changed to pqr"
-					},
-					new ExtremelyUnlikelyTableWithRegularPk
-					{
-						Id = 3,          // Primary key value is given in the INSERT statement.
-						TestColumn = "jkl changed to xyz"
-					}
+				= new [] {
+					new ExtremelyUnlikelyTableWithRegularPk {
+							Id = 2,          // Primary key value is given in the INSERT statement.
+							TestColumn = "ghi changed to pqr"
+						},
+					new ExtremelyUnlikelyTableWithRegularPk {
+							Id = 3,          // Primary key value is given in the INSERT statement.
+							TestColumn = "jkl changed to xyz"
+						}
 				};
 
 			// Call the target method.
@@ -110,9 +104,7 @@ namespace Given_that_a_DB_table_with_single_column_PK_and_corresponding_attribut
 			}
 		}
 
-		/// <summary>
-		/// Cleans up the debri in the DB that were created for testing purpose.
-		/// </summary>
+		// Cleans up the debri in the DB that were created for testing purpose.
 		[TestCleanup]
 		public void CleanUp ()
 		{

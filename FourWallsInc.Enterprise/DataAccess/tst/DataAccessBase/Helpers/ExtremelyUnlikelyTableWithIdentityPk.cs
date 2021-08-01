@@ -3,10 +3,7 @@ using FourWallsInc.Entity.EntityAccess;
 
 namespace FourWallsInc.DataAccess.Tests.DataAccessBase.Helpers
 {
-	/// <summary>
-	/// A test table tagged to be having an identity column based primary key.
-	/// </summary>
-	/// <seealso cref="FourWallsInc.Entity.DTOBase" />
+	// A test table tagged to be having an identity column based primary key.
 	[Table]
 	public sealed class ExtremelyUnlikelyTableWithIdentityPk
 		: DTOBase

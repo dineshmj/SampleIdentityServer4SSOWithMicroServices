@@ -1,4 +1,4 @@
-﻿public class CustomResponseHeadersBuilder
+﻿public sealed class CustomResponseHeadersBuilder
 {
 	private readonly CustomResponseHeadersPolicy _policy = new CustomResponseHeadersPolicy ();
 
@@ -6,7 +6,7 @@
 	{
 		AddFrameOptionsDeny ();
 		// AddXssProtectionBlock();
-		//AddContentTypeOptionsNoSniff();
+		// AddContentTypeOptionsNoSniff();
 		// AddStrictTransportSecurityMaxAge();
 		RemoveServerHeader ();
 

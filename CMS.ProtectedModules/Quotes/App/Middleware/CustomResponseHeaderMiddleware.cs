@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CMS.Quotes.App.Middleware
 {
-	public class CustomResponseHeaderMiddleware
+	public sealed class CustomResponseHeaderMiddleware
 	{
 		private readonly RequestDelegate requestDelegate;
 		private readonly CustomResponseHeadersPolicy policy;

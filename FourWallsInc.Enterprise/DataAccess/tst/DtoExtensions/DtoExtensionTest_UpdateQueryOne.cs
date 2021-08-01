@@ -17,8 +17,7 @@ namespace Given_that_an_entity_class_without_Table_attribute_is_available
 		{
 			// Prepare the test entities.
 			this.incompatibleTestEntity
-				= new EntityWithNoAttributeTable
-					{
+				= new EntityWithNoAttributeTable {
 						FirstName = "John",
 						LastName = "Smith"
 					};

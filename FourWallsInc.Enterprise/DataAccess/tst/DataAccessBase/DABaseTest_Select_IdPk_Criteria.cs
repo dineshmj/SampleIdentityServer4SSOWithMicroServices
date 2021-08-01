@@ -11,9 +11,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 	[TestClass]
 	public sealed class When_I_call_the_GetInstances_method_on_DataAccess_class_with_a_search_criteria
 	{
-		/// <summary>
-		/// Helps prepare dummy test tables in the DB with test records.
-		/// </summary>
+		// Helps prepare dummy test tables in the DB with test records.
 		[TestInitialize]
 		public void Initialize ()
 		{
@@ -34,8 +32,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			// Prepare the target object, and parameters for target method.
 			var identityPkDataAccess = new IdentityPkDataAccess (configManager.Object);
 			var emptySearchCriteria
-				= new ExtremelyUnlikelyTableWithIdentityPk
-					{
+				= new ExtremelyUnlikelyTableWithIdentityPk {
 						TestColumn = "def"				// There is only one record with this value for this column.
 					};
 
@@ -48,9 +45,7 @@ namespace Given_that_a_DB_table_with_identity_based_PK_and_corresponding_attribu
 			listOfUsers.Count.Should ().Be (1);
 		}
 
-		/// <summary>
-		/// Cleans up the debri in the DB that were created for testing purpose.
-		/// </summary>
+		// Cleans up the debri in the DB that were created for testing purpose.
 		[TestCleanup]
 		public void CleanUp ()
 		{
