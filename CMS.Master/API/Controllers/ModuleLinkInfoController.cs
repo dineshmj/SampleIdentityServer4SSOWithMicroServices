@@ -5,15 +5,13 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using FourWallsInc.Entity.LobApp.CMS;
 using CMS.Master.Api.Business;
+using FourWallsInc.Entity.LobApp.CMS;
 
 namespace CMS.Master.Api.Controllers
 {
-	/// <summary>
-	/// This controller sends back a list of links based on the access grants available (roles) with the
-	/// signed in user.
-	/// </summary>
+	// This controller sends back a list of links based on the access grants available (roles) with the
+	// signed in user.
 	[Authorize]
 	[Produces ("application/json")]
 	[Route ("api/ModuleLinkInfo")]
@@ -22,18 +20,12 @@ namespace CMS.Master.Api.Controllers
 	{
 		private readonly ICmsModuleAndLinksBizFacade cmsModuleAndLinksBizFacade;
 
-		public ModuleLinkInfoController
-			(
-				ICmsModuleAndLinksBizFacade cmsModuleAndLinksBizFacade
-			)
+		public ModuleLinkInfoController (ICmsModuleAndLinksBizFacade cmsModuleAndLinksBizFacade)
 		{
 			this.cmsModuleAndLinksBizFacade = cmsModuleAndLinksBizFacade;
 		}
 
-		/// <summary>
-		/// Gets a list of links available to the signed in user.
-		/// </summary>
-		/// <returns></returns>
+		// Gets a list of links available to the signed in user.
 		public IEnumerable<CmsModuleAndLinkInfo> Get ()
 		{
 			// // ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: Extract the "roles" of the signed in user by inspecting the Claims.

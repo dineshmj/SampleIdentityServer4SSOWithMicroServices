@@ -5,9 +5,7 @@ using FourWallsInc.Entity.LobApp.CMS;
 
 namespace CMS.Master.Api.DataAccess
 {
-	/// <summary>
-	/// A data access class for module and links info.
-	/// </summary>
+	// A data access class for module and links info.
 	public sealed class StubModuleLinkDataAccess
 		: IModuleLinkDataAccess
 	{
@@ -24,7 +22,7 @@ namespace CMS.Master.Api.DataAccess
 					moduleAndLinks.AddRange (moduleAndLinksForThisRole);
 			}
 
-			return (new ReadOnlyCollection<CmsModuleAndLinkInfo> (moduleAndLinks));
+			return new ReadOnlyCollection<CmsModuleAndLinkInfo> (moduleAndLinks);
 		}
 
 		private List<CmsModuleAndLinkInfo> GetModuleAndLinkForRole (string roleName)

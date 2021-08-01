@@ -11,21 +11,13 @@ namespace CMS.Master.Api.Controllers
 	public sealed class BrandInfoController
 		: Controller
 	{
-		#region Methods.
-
 		public object Get ()
 		{
-			return
-				(
-					new BrandInfo
-					{
-						CompanyName = "Four Walls Inc.",
-						ApplicationName = "Customer Management System",
-						Version = "1.2.0.6"
-					}
-				);
+			return new BrandInfo {
+					CompanyName = "Four Walls Inc.",
+					ApplicationName = "Customer Management System",
+					Version = "1.2.0.6"
+				};
 		}
-
-		#endregion
 	}
 }

@@ -4,17 +4,10 @@ using FourWallsInc.Entity.LobApp.CMS;
 
 namespace CMS.Master.Api.DataAccess
 {
-	/// <summary>
-	/// A data access class for module and links info.
-	/// </summary>
+	// A data access class for module and links info.
 	public interface IModuleLinkDataAccess
 	{
-		/// <summary>
-		/// Gets the module and link details for the specified login ID.
-		/// </summary>
-		/// <param name="roleNames">A list of roles to which the signed in user
-		/// has access.</param>
-		/// <returns></returns>
+		// Gets the module and link details for the specified login ID.
 		IList<CmsModuleAndLinkInfo> GetModuleAndLinkDetailsFor (IList<string> roleNames);
 	}
 }

@@ -5,18 +5,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
+using CMS.Master.Api.DataAccess;
+using CMS.Master.Api.Business;
+
 using FourWallsInc.Entity.SSO;
 using FourWallsInc.Infrastructure.ConfigMgmt;
 using FourWallsInc.Utilities;
-using CMS.Master.Api.DataAccess;
-using CMS.Master.Api.Business;
 
 namespace CMS.Master.Api
 {
 	public class Startup
 	{
 		private readonly IConfiguration configuration;
-		private bool useStubData = false;
+		private readonly bool useStubData = false;
 		private SsoInfo ssoInfo;
 
 		public Startup

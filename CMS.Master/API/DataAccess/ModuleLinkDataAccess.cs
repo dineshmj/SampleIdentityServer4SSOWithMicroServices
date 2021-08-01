@@ -11,9 +11,7 @@ using FourWallsInc.Infrastructure.ConfigMgmt;
 
 namespace CMS.Master.Api.DataAccess
 {
-	/// <summary>
-	/// A data access class for module and links info.
-	/// </summary>
+	// A data access class for module and links info.
 	public sealed class ModuleLinkDataAccess
 		: IModuleLinkDataAccess
 	{
@@ -24,12 +22,7 @@ namespace CMS.Master.Api.DataAccess
 			this.connectionString = configManager.GetConnectionString (DAConstants.DEFAULT_CONNECTION);
 		}
 
-		/// <summary>
-		/// Gets the module and link details for the specified login ID.
-		/// </summary>
-		/// <param name="roleNames">A list of roles to which the signed in user
-		/// has access.</param>
-		/// <returns></returns>
+		// Gets the module and link details for the specified login ID.
 		public IList<CmsModuleAndLinkInfo> GetModuleAndLinkDetailsFor (IList<string> roleNames)
 		{
 			const string TVP_ROLE_NAME_PARAM_TYPE = "[dbo].[tvpRoleName]";
