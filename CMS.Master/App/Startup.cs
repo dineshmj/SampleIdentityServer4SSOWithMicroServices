@@ -19,7 +19,7 @@ namespace CMS.Master.App
 	/// Helps configure this web app (Master web app) the exact information that it has to
 	/// exchange with the protecting IDP.
 	/// </summary>
-	public class Startup
+	public sealed class Startup
 	{
 		private readonly IConfiguration configuration;
 		private AppPair masterAppPair;
@@ -33,8 +33,6 @@ namespace CMS.Master.App
 			this.configuration = configuration;
 		}
 
-		#region Methods.
-
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure (IApplicationBuilder app, IHostingEnvironment env)
 		{
@@ -42,7 +40,8 @@ namespace CMS.Master.App
 			{
 				app.UseDeveloperExceptionPage ();
 				app.UseBrowserLink ();
-			}else
+			}
+			else
 			{
 				app.UseExceptionHandler ("/Home/Error");
 			}
@@ -113,18 +112,11 @@ namespace CMS.Master.App
 					);
 
 			services.AddMemoryCache ();
-			services.AddMvc ();
+
 			// Tells this application that it should use MVC based UIs.
+			services.AddMvc ();
 		}
 
-		#endregion
-
-		#region Private methods.
-
-		/// <summary>
-		/// Sets the 
-		/// </summary>
-		/// <param name="options"></param>
 		private void SetOpenIdConnectOptionsHybrid (OpenIdConnectOptions options)
 		{
 			// ↓↓ ⮦⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺ SUPER CATCH: Tells as to which IDP is to be used for authentication.
@@ -169,7 +161,5 @@ namespace CMS.Master.App
 			options.SaveTokens = true;
 			options.GetClaimsFromUserInfoEndpoint = true;
 		}
-
-		#endregion
 	}
 }

@@ -27,8 +27,6 @@ namespace CMS.Master.App.Controllers
 			this.configManager = configManager;
 		}
 
-		#region Action methods.
-
 		// Forms the menu strip on the left pane.
 		public async Task<IActionResult> Index ()
 		{
@@ -154,7 +152,5 @@ namespace CMS.Master.App.Controllers
 				return base.View (masterLayoutModel);
 			}
 		}
-
-		#endregion
 	}
 }
