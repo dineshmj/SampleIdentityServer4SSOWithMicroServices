@@ -19,15 +19,22 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div @*class="container"*@>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <span class="navbar-brand">Four Walls Insurance Inc.</span>
-            </div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				@{
+					string fullName = $"{ base.User.Claims.FirstOrDefault (cl => cl.Type == System.Security.Claims.ClaimTypes.GivenName)?.Value } { base.User.Claims.FirstOrDefault (cl => cl.Type == System.Security.Claims.ClaimTypes.Surname)?.Value }";
+				}
+
+			<span class="navbar-brand">
+				Four Walls Insurance Inc. - Welcome, @fullName! 
+			</span>
+			</div>
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>
@@ -46,13 +53,12 @@
 					}
 				</ul>
             </div>
-        </div>
     </nav>
     <div @*class="container body-content"*@>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - Four Walls Insurance Inc.</p>
+            <p>&copy; @System.DateTime.Now.Year - Four Walls Insurance Inc.</p>
         </footer>
     </div>
 
