@@ -17,12 +17,12 @@ namespace CMS.Master.App.Controllers
 {
 	// This controller's name is apparently wrong - it should have been "MenuStripController" instead.
 	[Authorize]
-	public sealed class BrandInfoController
+	public sealed class MenuStripController
 		: Controller
 	{
 		private readonly IConfigManager configManager;
 
-		public BrandInfoController (IConfigManager configManager)
+		public MenuStripController (IConfigManager configManager)
 		{
 			this.configManager = configManager;
 		}

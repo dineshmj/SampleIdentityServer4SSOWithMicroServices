@@ -63,7 +63,7 @@ namespace CMS.Master.App
 						routes.MapRoute
 						(
 								name: "default",
-							template: "{controller=BrandInfo}/{action=Index}/{id?}"
+							template: "{controller=MenuStrip}/{action=Index}/{id?}"
 						);
 					}
 				);
